@@ -1,0 +1,16 @@
+N, M = map(int, input().split())
+P = [list(map(int, input().split())) for _ in range(M)]
+Q = []
+
+P1 = list(zip(*P))
+
+for i in range(N):
+    S = max(P1[i])
+    T = P1[i].index(S)
+    Q.append(T)
+
+V = {}
+for i in range(M):
+    V.update({i+1: Q.count(i)})
+H, L = max(V.items(), key = lambda x: x[1])
+print(f"{H} {L}")
